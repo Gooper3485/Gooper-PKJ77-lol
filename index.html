@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Game Hub</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial; background:#0f1720;color:#e6eef8;margin:0;padding:20px}
+    header{max-width:960px;margin:0 auto;text-align:center}
+    h1{margin:10px 0 25px}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:960px;margin:20px auto}
+    .card{background:#0b1220;border-radius:10px;padding:12px;box-shadow:0 6px 18px rgba(2,6,23,.6)}
+    .thumb{width:100%;height:160px;border-radius:6px;background:#061126;display:flex;align-items:center;justify-content:center;color:#9fb7d7;font-weight:600}
+    .card a{display:block;margin-top:10px;text-decoration:none;color:#cfe8ff}
+    iframe{width:100%;height:600px;border:none;border-radius:8px;display:block;margin:20px auto;max-width:960px}
+    .note{max-width:960px;margin:10px auto;color:#9fb7d7;font-size:0.95rem}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Game Hub</h1>
+    <div class="note">Host game files in this repo (recommended) or link to allowed web games. Click a game to load it below.</div>
+  </header>
+
+  <div class="gallery">
+    <div class="card">
+      <div class="thumb">My HTML5 Game A</div>
+      <a href="#" data-src="games/game-a/index.html">Play Game A</a>
+    </div>
+    <div class="card">
+      <div class="thumb">My HTML5 Game B</div>
+      <a href="#" data-src="games/game-b/index.html">Play Game B</a>
+    </div>
+    <div class="card">
+      <div class="thumb">External allowed game</div>
+      <a href="#" data-src="https://example-allowed-game.com/embed">Open External Game</a>
+    </div>
+  </div>
+
+  <iframe id="player" src=""></iframe>
+
+  <script>
+    document.querySelectorAll('.card a').forEach(a=>{
+      a.addEventListener('click', e=>{
+        e.preventDefault();
+        const src = a.getAttribute('data-src');
+        document.getElementById('player').src = src;
+      });
+    });
+  </script>
+</body>
+</html>
